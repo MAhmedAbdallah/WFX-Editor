@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-configuration PUBLIC "-//Hibernate/Hibernate Configuration DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+  <session-factory>
+    <!--        <property name="hibernate.dialect">org.hibernate.dialect.Oracle9Dialect</property>
+        <property name="hibernate.connection.driver_class">oracle.jdbc.OracleDriver</property>
+        <property name="hibernate.connection.url">jdbc:oracle:thin:@10.230.86.106:3333:BSCSTST1</property>
+        <property name="hibernate.connection.username">SYSADM</property>
+        <property name="hibernate.connection.password">SYSADM</property>
+        <property name="hibernate.show_sql">true</property>
+        <property name="hibernate.hbm2ddl.auto">validate</property>
+    
+        <property name="hibernate.current_session_context_class">thread</property>
+
+-->
+    <property name="hibernate.dialect">org.hibernate.dialect.OracleDialect</property>
+    <property name="hibernate.connection.driver_class">oracle.jdbc.OracleDriver</property>
+    <property name="hibernate.connection.url">jdbc:oracle:thin:@10.230.86.106:3333:BSCSTST1</property>
+    <property name="hibernate.connection.username">SYSADM</property>
+    <property name="hibernate.connection.password">SYSADM</property>
+    <property name="hibernate.default_schema">WORKFLOWX</property>
+    <property name="hibernate.bytecode.use_reflection_optimizer">false</property>
+    <property name="hibernate.search.autoregister_listeners">false</property>
+    <property name="hibernate.show_sql">true</property>
+    <property name="hibernate.transaction.auto_close_session">false</property>
+    <mapping class="com.vodafone.wfx.model.VfeActivitiesAdp"/>
+    <mapping class="com.vodafone.wfx.model.VfeActivityErrorsAdp"/>
+    <mapping class="com.vodafone.wfx.model.VfeCmsLoadingExceptionsAdp"/>
+    <mapping class="com.vodafone.wfx.model.VfeCmsLoadingExceptionsAdpId"/>
+    <mapping class="com.vodafone.wfx.model.VfeConditionsAdp"/>
+    <mapping class="com.vodafone.wfx.model.VfeErrorsMappingAdp"/>
+    <mapping class="com.vodafone.wfx.model.VfeErrorsMappingAdpId"/>
+    <mapping class="com.vodafone.wfx.model.VfeHttpParamsMappingAdp"/>
+    <mapping class="com.vodafone.wfx.model.VfeHttpParamsMappingAdpId"/>
+    <mapping class="com.vodafone.wfx.model.VfeHttpSystemsAdp"/>
+    <mapping class="com.vodafone.wfx.model.VfeJavaActivityParamsAdp"/>
+    <mapping class="com.vodafone.wfx.model.VfeJavaActivityParamsAdpId"/>
+    <mapping class="com.vodafone.wfx.model.VfeLkActivitiesTypeAdp"/>
+    <mapping class="com.vodafone.wfx.model.VfeLkAirServersAdp"/>
+    <mapping class="com.vodafone.wfx.model.VfeLkAirServerTypesAdp"/>
+    <mapping class="com.vodafone.wfx.model.VfeLkBooleanAdp"/>
+    <mapping class="com.vodafone.wfx.model.VfeLkConditionTypesAdp"/>
+    <mapping class="com.vodafone.wfx.model.VfeLkDbAdp"/>
+    <mapping class="com.vodafone.wfx.model.VfeLkErrorCodesAdp"/>
+    <mapping class="com.vodafone.wfx.model.VfeLkHttpRequestTypeAdp"/>
+    <mapping class="com.vodafone.wfx.model.VfeLkPreparationTypesAdp"/>
+    <mapping class="com.vodafone.wfx.model.VfeLkRelationTypesAdp"/>
+    <mapping class="com.vodafone.wfx.model.VfeLkSpParamTypeAdp"/>
+    <mapping class="com.vodafone.wfx.model.VfeLkSshServersAdp"/>
+    <mapping class="com.vodafone.wfx.model.VfeLkStoredProceduresAdp"/>
+    <mapping class="com.vodafone.wfx.model.VfePreparationConditionsAdp"/>
+    <mapping class="com.vodafone.wfx.model.VfePreparationConditionsAdpId"/>
+    <mapping class="com.vodafone.wfx.model.VfePreparationModeAdp"/>
+    <mapping class="com.vodafone.wfx.model.VfePreparationParametersAdp"/>
+    <mapping class="com.vodafone.wfx.model.VfePreparationParametersAdpId"/>
+    <mapping class="com.vodafone.wfx.model.VfePrivatePoolAdp"/>
+    <mapping class="com.vodafone.wfx.model.VfeWorkflowConditionsAdp"/>
+    <mapping class="com.vodafone.wfx.model.VfeWorkflowConditionsAdpId"/>
+    <mapping class="com.vodafone.wfx.model.VfeSpActivityParamsAdp"/>
+    <mapping class="com.vodafone.wfx.model.VfeWebServiceSettings"/>
+    <mapping class="com.vodafone.wfx.model.VfeWorkflowAirServersAdp"/>
+    <mapping class="com.vodafone.wfx.model.VfeWorkflowDetailOutputAdp"/>
+    <mapping class="com.vodafone.wfx.model.VfeWorkflowDetailOutputAdpId"/>
+    <mapping class="com.vodafone.wfx.model.VfeWorkflowInputAdp"/>
+    <mapping class="com.vodafone.wfx.model.VfeWorkflowInputAdpId"/>
+    <mapping class="com.vodafone.wfx.model.VfeWorkflowLogAdp"/>
+    <!--          <mapping class="com.vodafone.wfx.model.VfeWorkflowLogAdpId" />-->
+    <mapping class="com.vodafone.wfx.model.VfeWorkflowOutputAdp"/>
+    <mapping class="com.vodafone.wfx.model.VfeWorkflowOutputAdpId"/>
+    <mapping class="com.vodafone.wfx.model.VfeWorkflowPathsAdp"/>
+    <mapping class="com.vodafone.wfx.model.VfeWorkflowPathsAdpId"/>
+    <mapping class="com.vodafone.wfx.model.VfeWorkflowPreparationAdp"/>
+    <mapping class="com.vodafone.wfx.model.VfeWorkflowRollbackAdp"/>
+    <mapping class="com.vodafone.wfx.model.VfeWorkflowsAdp"/>
+    <mapping class="com.vodafone.wfx.model.VfeWorkflowsAdpId"/>
+    <mapping class="com.vodafone.wfx.model.VfeWorkflowStepsAdp"/>
+    <mapping class="com.vodafone.wfx.model.VfeWorkflowStepsAdpId"/>
+    <mapping class="com.vodafone.wfx.model.VfeWorkflowVersionsAdp"/>
+  </session-factory>
+</hibernate-configuration>
