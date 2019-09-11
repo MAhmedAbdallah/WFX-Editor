@@ -49,7 +49,11 @@
                 document.getElementById("conditionVersionId").value = versionId;
 
             }
-        </script>
+        </script>                    
+        
+        
+        
+        
 
         <!--    Author     : V19MFoda    -->
 
@@ -79,12 +83,12 @@
 
     </head>
     <body class="font-weight-bold text-center">
-        <% VfeWorkflowsAdp workflow = (VfeWorkflowsAdp) request.getSession(false).getAttribute("workflow");%>
+        <% VfeWorkflowsAdp workflow = (VfeWorkflowsAdp) request.getSession(false).  getAttribute("workflow");%>
         <%
 
             // out.println("remote adress::" + request.getRemoteAddr()+ "<br>");
 //           
-//            response.setContentType("text/html");
+//            response.setContentType("text/html");        l;
 //
 //    String hostname = request.getRemoteHost(); // hostname
 //    out.println("hostname"+hostname+"<br>");
