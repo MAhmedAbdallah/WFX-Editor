@@ -37,7 +37,10 @@
     <body   class="font-weight-bold text-center">
         
         
-        
+        <%
+                    long activityId = (long) request.getAttribute("activityId");
+
+        %>
         
         
         
@@ -48,62 +51,46 @@
             <div class="modal-dialog modal-lg">
                 <div class="modal-content container-fluid">
                     <div align="center" >
-                        <form method="POST" action="../../Activity/Create" >
+                        <form method="POST" action="../../Preparation/Create/<%= activityId %>" >
 
 
-                            <input type="hidden" name="currentOrder" id="currentOrder" value="">
-                            <input type="hidden" name="activityId" id="activityId" value="">
+<!--                            <input type="hidden" name="currentOrder" id="currentOrder" value="">
+                            <input type="hidden" name="activityId" id="activityId" value="">-->
                             <br>
                             <div class="form-group row">
                                 <label
                                     class="col-sm-2 col-form-label">PARAMETER NAME</label>
                                 <div class="col-sm-10">
 
-                                    <input type="text" name="activityDescription" class="form-control" id="inputPassword" placeholder="PARAMETER NAME">
+                                    <input type="text" name="parameterName" class="form-control" id="inputPassword" placeholder="PARAMETER NAME">
                                 </div>
                             </div>
                             <div class="form-group row">
                                 <label for="inputPassword" class="col-sm-2 col-form-label">SAVE TO POOL</label>
                                 <div class="col-sm-10">
-                                    <input type="text" name="activityDBQuery" class="form-control" id="inputPassword" placeholder="SAVE TO POOL">
+                                    <input type="text" name="saveToPool" class="form-control" id="inputPassword" placeholder="SAVE TO POOL">
                                 </div>
                             </div>
                             <div class="form-group row">
                                 <label for="inputPassword" class="col-sm-2 col-form-label">PREPARATION ORDER</label>
                                 <div class="col-sm-10">
-                                    <input type="text" name="activityCMSFunction" class="form-control" id="inputPassword" placeholder="PREPARATION ORDER">
+                                    <input type="text" name="preparationOrder" class="form-control" id="inputPassword" placeholder="PREPARATION ORDER">
                                 </div>
                             </div>
-                            <div class="form-group row">
-                                <label for="inputPassword" class="col-sm-2 col-form-label">CURRENT ORDER</label>
-                                <div class="col-sm-10">
-
-                                    <select name="activityType" class="form-control">
-
-                                          <option class="form-control" value="1">1</option>
-                                      
-                                    </select>
-
-
-                                </div>
-                            </div>
+                    
                          
                             <div class="form-group row">
                                 <label for="inputPassword" class="col-sm-2 col-form-label">PREPARATION TYPE ID</label>
                                 <div class="col-sm-10">
-                                    <input type="text" name="activityHTTPURL" class="form-control" id="inputPassword" placeholder="PREPARATION TYPE ID">
+                                    <input type="text" name="preparationTypeId" class="form-control" id="inputPassword" placeholder="PREPARATION TYPE ID">
                                 </div>
                             </div>
                             <div class="form-group row">
                                 <label for="inputPassword" class="col-sm-2 col-form-label">ERROR CODE ID</label>
                                 <div class="col-sm-10">
 
-                                    <select  name="activitySystemID" class="form-control">
+                 <input type="text" name="errorCodeId" class="form-control" id="inputPassword" placeholder="PREPARATION TYPE ID">
 
-                                       
-                                        <option class="form-control" value="Test">Test</option>
-                                       
-                                    </select>
 
 
                                 </div>
@@ -111,27 +98,21 @@
                             <div class="form-group row">
                                 <label for="inputPassword" class="col-sm-2 col-form-label">PREPARATION MODE ID</label>
                                 <div class="col-sm-10">
-                                    <input type="text" name="activitySleepTime" class="form-control" id="inputPassword" placeholder="PREPARATION MODE ID">
+                                    <input type="text" name="preparationModeId" class="form-control" id="inputPassword" placeholder="PREPARATION MODE ID">
                                 </div>
                             </div>
                             <div class="form-group row">
                                 <label for="inputPassword" class="col-sm-2 col-form-label">DESCRIPTION</label>
                                 <div class="col-sm-10">
-                                    <input type="text" name="activityDoCache" class="form-control" id="inputPassword" placeholder="DESCRIPTION">
+                                    <input type="text" name="description" class="form-control" id="inputPassword" placeholder="DESCRIPTION">
                                 </div>
                             </div>
                             <div class="form-group row">
                                 <label for="inputPassword" class="col-sm-2 col-form-label">ROLLBACK ID</label>
                                 <div class="col-sm-10">
 
-                                    <select  name="httpRequestType" class="form-control">
+                        <input type="text" name="rollBackId" class="form-control" id="inputPassword" placeholder="ROLLBACK ID">
 
-
-                                        <option class="form-control" value="1">GET</option>
-                                        <option class="form-control" value="2">POST</option>
-
-
-                                    </select>
 
 
                                 </div>
@@ -139,19 +120,19 @@
                             <div class="form-group row">
                                 <label for="inputPassword" class="col-sm-2 col-form-label">DB ID</label>
                                 <div class="col-sm-10">
-                                    <input type="text" name="activityHttpXmlInput" class="form-control" id="inputPassword" placeholder="DB ID">
+                                    <input type="text" name="dbId" class="form-control" id="inputPassword" placeholder="DB ID">
                                 </div>
                             </div>
                             <div class="form-group row">
                                 <label for="inputPassword" class="col-sm-2 col-form-label">DO COMMIT</label>
                                 <div class="col-sm-10">
-                                    <input type="text" name="activityInterfaceName" class="form-control" id="inputPassword" placeholder="DO COMMIT">
+                                    <input type="text" name="doCommit" class="form-control" id="inputPassword" placeholder="DO COMMIT">
                                 </div>
                             </div>
                             <div class="form-group row">
                                 <label for="inputPassword" class="col-sm-2 col-form-label">QUERY TIMEOUT</label>
                                 <div class="col-sm-10">
-                                    <input type="text" name="activityOperationName" class="form-control" id="inputPassword" placeholder="QUERY TIMEOUT">
+                                    <input type="text" name="queryTimeOut" class="form-control" id="inputPassword" placeholder="QUERY TIMEOUT">
                                 </div>
                             </div>
                               <div class="form-group row">
@@ -387,7 +368,6 @@
         <br>
         <%
             // out.println(request.getAttribute("activityId"));
-            long activityId = (long) request.getAttribute("activityId");
             VfeActivitiesAdp act = null;
 
             VfeWorkflowsAdp workflow = (VfeWorkflowsAdp) request.getSession(false).getAttribute("workflow");
@@ -940,7 +920,13 @@
                                         <a href="../../PreparationCondition/Get/Conditions/<%= preparation.getPreparationId()%>">
                                             <%= preparation.getPreparationId()%>
                                             <br>
-                                              <a href="#" onclick="return confirm('Are you sure?')" class=" btn-sm  btn-labeled btn-danger "  role="button">Delete Preparation</a>  
+                                              <a href="
+                                                 ../../Preparation/Delete/<%= preparation.getPreparationId()%>/<%= activityId %>
+                                                 
+                                                 
+                                                 
+                                                 
+                                                 " onclick="return confirm('Are you sure?')" class=" btn-sm  btn-labeled btn-danger "  role="button">Delete Preparation</a>  
 
                                         </a>                
 

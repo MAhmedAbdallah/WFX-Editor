@@ -71,6 +71,7 @@ public class ActivityController {
                     
                     if(preparation.getActivityId()==activityId)
                     activityPreparations.add(preparation);
+                  //  request.getSession().setAttribute("stepOrder",step.getId().getCurrentOrder());
                     
                     
                     

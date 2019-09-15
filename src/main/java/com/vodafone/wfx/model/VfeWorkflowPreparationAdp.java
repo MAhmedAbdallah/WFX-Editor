@@ -34,7 +34,7 @@
     /*     */    private String description;
     /*     */    private VfeLkDbAdp dbId;
     /*     */    private VfeLkBooleanAdp doCommit;
-    /*     */    private BigDecimal queryTimeout;
+    /*     */    private Long queryTimeout;
     /*  35 */    private Set<VfePreparationConditionsAdp> vfePreparationConditionsAdps = new HashSet();
     /*  36 */    private Set<VfePreparationParametersAdp> vfePreparationParametersAdps = new HashSet();
                  
@@ -72,7 +72,7 @@
  /*     */
  /*     */
  /*     */
- /*     */ public VfeWorkflowPreparationAdp(long preparationId, VfeLkPreparationTypesAdp vfeLkPreparationTypesAdp, VfeLkBooleanAdp saveToPool, VfeLkErrorCodesAdp vfeLkErrorCodesAdp, VfeWorkflowRollbackAdp vfeWorkflowRollbackAdp, VfePreparationModeAdp vfePreparationModeAdp, String parameterName, Long preparationOrder, Long workflowId, Long activityId, Long currentOrder, String description, Long versionId, VfeLkDbAdp dbId, VfeLkBooleanAdp doCommit, BigDecimal queryTimeout, Set<VfePreparationConditionsAdp> vfePreparationConditionsAdps, Set<VfePreparationParametersAdp> vfePreparationParametersAdps) {
+ /*     */ public VfeWorkflowPreparationAdp(long preparationId, VfeLkPreparationTypesAdp vfeLkPreparationTypesAdp, VfeLkBooleanAdp saveToPool, VfeLkErrorCodesAdp vfeLkErrorCodesAdp, VfeWorkflowRollbackAdp vfeWorkflowRollbackAdp, VfePreparationModeAdp vfePreparationModeAdp, String parameterName, Long preparationOrder, Long workflowId, Long activityId, Long currentOrder, String description, Long versionId, VfeLkDbAdp dbId, VfeLkBooleanAdp doCommit, Long queryTimeout, Set<VfePreparationConditionsAdp> vfePreparationConditionsAdps, Set<VfePreparationParametersAdp> vfePreparationParametersAdps) {
         /*  53 */ this.preparationId = preparationId;
         /*  54 */ this.vfeLkPreparationTypesAdp = vfeLkPreparationTypesAdp;
         /*  55 */ this.saveToPool = saveToPool;
@@ -293,14 +293,14 @@
  /*     */
  /*     */ @Column(name = "QUERY_TIMEOUT", precision = 22, scale = 0)
     /*     */    @Order(11)
-    /* 191 */ public BigDecimal getQueryTimeout() {
+    /* 191 */ public Long getQueryTimeout() {
         return this.queryTimeout;
     }
 
     /*     */
  /*     */
  /*     */
- /* 195 */ public void setQueryTimeout(BigDecimal queryTimeout) {
+ /* 195 */ public void setQueryTimeout(Long queryTimeout) {
         this.queryTimeout = queryTimeout;
     }
 
