@@ -65,7 +65,7 @@ public class WorkFlowController {
             workFlow = workFlowService.getWorkFlow(workFlowId, workFlowVersion); //(VfeWorkflowsAdp) session.get(VfeWorkflowsAdp.class, id);
                      
             HttpSession session = request.getSession(true);
-            session.setMaxInactiveInterval(3600);
+            session.setMaxInactiveInterval(-1);
             session.setAttribute("workflow", workFlow);
             //Obey on hands
            

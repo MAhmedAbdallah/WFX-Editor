@@ -69,7 +69,7 @@ public class PreparationConditionDAOImp implements PreparationConditionDAO {
     }
 
     @Override
-    public boolean deletePreparationCondition(VfePreparationConditionsAdp preparationCondition) {
+    public  boolean  deletePreparationCondition(VfePreparationConditionsAdp preparationCondition) {
 
         StatelessSession session = null;
         boolean flag = false;

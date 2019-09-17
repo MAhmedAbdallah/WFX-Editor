@@ -83,7 +83,8 @@
 
     </head>
     <body class="font-weight-bold text-center">
-        <% VfeWorkflowsAdp workflow = (VfeWorkflowsAdp) request.getSession(false).  getAttribute("workflow");%>
+        <% 
+               VfeWorkflowsAdp workflow = (VfeWorkflowsAdp) request.getSession(false).  getAttribute("workflow");%>
         <%
 
             // out.println("remote adress::" + request.getRemoteAddr()+ "<br>");
@@ -177,7 +178,8 @@
 
                             <tbody >
 
-                                <%                                    for (VfeWorkflowInputAdp input : workflow.getVfeWorkflowInputAdps()) {
+                                <%                                
+                                    for (VfeWorkflowInputAdp input : workflow.getVfeWorkflowInputAdps()) {
                                         String isList = "-";
                                         String subFields = "-";
 
@@ -727,7 +729,7 @@
                                     <td> <%= preparation.getParameterName()%></td>
                                     <td><%= preparation.getSaveToPool().getBooleanValue()%> </td>
                                     <td><%= preparation.getPreparationOrder()%> </td>
-                                    <td> <%= step.getActivityId().getActivityId()%> </td>
+                                     <td> <%= step.getActivityId().getActivityId()%> </td>
 
 
                                     <td><%= preparation.getVfeLkPreparationTypesAdp().getPreparationDescription()%></td>
