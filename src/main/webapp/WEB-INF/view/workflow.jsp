@@ -297,6 +297,7 @@
                                 <div class="col-sm-10">
 
                                     <select name="activityType" class="form-control">
+<!--                                        <option class="form-control" value="null">Null</option>-->
 
                                         <%
 
@@ -329,6 +330,7 @@
                                 <div class="col-sm-10">
 
                                     <select  name="activitySystemID" class="form-control">
+                                        <option class="form-control" value="null">Null</option>
 
                                         <%
                                             List<VfeHttpSystemsAdp> httpSystemTypes = (List<  VfeHttpSystemsAdp>) request.getSession().getAttribute("httpSystems");
@@ -399,7 +401,7 @@
 
                                     <select  name="activityDBID" class="form-control">
 
-<!--                                        <option class="form-control" value="null">Null</option>-->
+                                        <option class="form-control" value="null">Null</option>
                                         <%
                                             List<VfeLkDbAdp> dbName = (List<  VfeLkDbAdp>) request.getSession().getAttribute("dbName");
 

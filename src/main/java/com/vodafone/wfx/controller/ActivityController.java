@@ -166,7 +166,7 @@ public class ActivityController {
             activity.setCmsFunction(activityCMSFunction);
         }
 
-        if (activityTypeForm == null || activityTypeForm.length() == 0) {
+        if (activityTypeForm== null || activityTypeForm.length() == 0  ) {
             activity.setVfeLkActivitiesTypeAdp(null);
         } else {
             activity.setVfeLkActivitiesTypeAdp(new VfeLkActivitiesTypeAdp(Long.parseLong(activityTypeForm)));
@@ -184,7 +184,7 @@ public class ActivityController {
             activity.setHttpUrl(activityHTTPURL);
         }
 
-        if (activitySystemID == null || activitySystemID.length() == 0) {
+        if (activitySystemID .equalsIgnoreCase("null")) {
             activity.setSystemId(null);
         } else {
             activity.setSystemId(new VfeHttpSystemsAdp(Long.parseLong(activitySystemID)));
@@ -231,7 +231,7 @@ public class ActivityController {
             activity.setInputName(activityInputName);
         }
 
-        if (activityDBID == null || activityDBID.length() == 0) {
+        if (activityDBID .equalsIgnoreCase("null")) {
             activity.setVfeLkDbAdp(null);
         } else {
             activity.setVfeLkDbAdp(new VfeLkDbAdp(Long.parseLong(activityDBID)));
