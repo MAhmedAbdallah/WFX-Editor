@@ -49,32 +49,16 @@ public class StepController {
     private StepService stepService;
     @Autowired
     private WorkFlowService workFlowSerice;
-    
-    
-    
-    
-    
-    
-    
-    
-        
-      @Autowired
+
+    @Autowired
     private PreparationConditionService preparationConditionService;
-      
-       @Autowired
+
+    @Autowired
     private PreparationParameterService preparationParameterService;
-       
-        @Autowired
+
+    @Autowired
     private PreparationService preparationService;
-        
-    
-    
-    
-    
-    
-    
-    
-    
+
     final Logger logger = Logger.getLogger(StepController.class);
 
     @GetMapping("/Get/{workFlowId}/{activityId}/{order}/{version}")
@@ -83,16 +67,16 @@ public class StepController {
         try {
             VfeWorkflowStepsAdpId stepId = new VfeWorkflowStepsAdpId(workFlowId, activityId, order, version);
             step = stepService.getStep(stepId);
-            logger.info("WorkFlow Name --------> " + step.getVfeWorkflowsAdp().getFlowName());
+            // logger.info("WorkFlow Name --------> " + step.getVfeWorkflowsAdp().getFlowName());
         } catch (Exception e) {
-            logger.error("Error In fetching Step With Activity Id " + activityId);
+            logger.error("Error In fetching Step With Activity Id " + activityId + " because" + e.getMessage());
         }
         return step;
     }
 
     @GetMapping("/Create")
     public String saveStep() {
-        System.out.println("Test");
+        // System.out.println("Test");
 
         long currentOrder = Long.parseLong(request.getSession().getAttribute("order").toString());
         long activityId = Long.parseLong(request.getSession().getAttribute("activityId").toString());
@@ -130,11 +114,10 @@ public class StepController {
         step.setId(stepId);
         try {
             logger.info("Response Flag of saving step  ------->   " + stepService.saveStep(step));
-            logger.info("Activity with Id " + newActivityId + " Created by  ------->   " +request.getSession().getAttribute("clientIp"));
-            
+            logger.info("Activity with Id " + newActivityId + " Created by  ------->   " + request.getSession().getAttribute("clientIp"));
 
         } catch (Exception e) {
-            logger.error("Error In Creating Step In Workflow  " + workflow.getId().getWorkflowId());
+            logger.error("Error In Creating Step In Workflow  " + workflow.getId().getWorkflowId() + " because " + e.getMessage());
         }
         return "redirect:/WorkFlow/Get/" + workflow.getId().getWorkflowId();
     }
@@ -144,64 +127,35 @@ public class StepController {
         try {
             VfeWorkflowStepsAdpId stepId = new VfeWorkflowStepsAdpId(workFlowId, activityId, order, version);
             VfeWorkflowStepsAdp step = stepService.getStep(stepId);
-            
-            
-            
-            
+
 //                  VfeWorkflowsAdp workflow = (VfeWorkflowsAdp) request.getSession(false).getAttribute("workflow");
 //
 //            Set<VfeWorkflowStepsAdp> steps = workflow.getVfeWorkflowStepsAdps();
 //
 //            for (VfeWorkflowStepsAdp step : steps) {
 //                if (step.getActivityId().getActivityId() == activityId) {
-                   for(VfeWorkflowPreparationAdp preparation:step.getVfeWorkflowPreparationAdps()){
-                      for(VfePreparationConditionsAdp preparationCondition : preparation.getVfePreparationConditionsAdps()){
-                          preparationConditionService.deletePreparationCondition(preparationCondition);
-                          
-                      }
-                      for(VfePreparationParametersAdp preparationParameter : preparation.getVfePreparationParametersAdps()){
-                          preparationParameterService.deletePreparationParameter(preparationParameter);
-                          
-                      }
-                      preparationService.deletePreparation(preparation);
-                      
-                   } 
+            for (VfeWorkflowPreparationAdp preparation : step.getVfeWorkflowPreparationAdps()) {
+                for (VfePreparationConditionsAdp preparationCondition : preparation.getVfePreparationConditionsAdps()) {
+                    preparationConditionService.deletePreparationCondition(preparationCondition);
 
-                
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
+                }
+                for (VfePreparationParametersAdp preparationParameter : preparation.getVfePreparationParametersAdps()) {
+                    preparationParameterService.deletePreparationParameter(preparationParameter);
+
+                }
+                preparationService.deletePreparation(preparation);
+
+            }
+
             logger.info("Response Flag of deleteing step ------->   " + stepService.deleteStep(step));
 
-            logger.info("Activity with Id " + activityId + " Deleted by  ------->   " +  request.getSession().getAttribute("clientIp"));
-          
-               
+            logger.info("Activity with Id " + activityId + " Deleted by  ------->   " + request.getSession().getAttribute("clientIp"));
 
-            
-        }catch (Exception e) {
-            logger.error("Error In Deleting Step with activity id  " + activityId);
+        } catch (Exception e) {
+            logger.error("Error In Deleting Step with activity id  " + activityId+" because "+e.getMessage());
         }
-            return "redirect:/WorkFlow/Get/" + workFlowId;
-
-        }
+        return "redirect:/WorkFlow/Get/" + workFlowId;
 
     }
+
+}

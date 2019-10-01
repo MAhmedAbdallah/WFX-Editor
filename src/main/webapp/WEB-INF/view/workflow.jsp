@@ -4,6 +4,7 @@
     Author     : V19MFoda
 --%>
 
+<%@page import="org.apache.log4j.Logger"%>
 <%@page import="java.net.UnknownHostException"%>
 <%@page import="java.util.Enumeration"%>
 <%@page import="com.vodafone.wfx.util.EditorUtil"%>
@@ -50,10 +51,10 @@
 
             }
         </script>                    
-        
-        
-        
-        
+
+
+
+
 
         <!--    Author     : V19MFoda    -->
 
@@ -83,11 +84,15 @@
 
     </head>
     <body class="font-weight-bold text-center">
-        <% 
-               VfeWorkflowsAdp workflow = (VfeWorkflowsAdp) request.getSession(false).  getAttribute("workflow");%>
         <%
+            VfeWorkflowsAdp workflow = (VfeWorkflowsAdp) request.getSession(false).getAttribute("workflow");
+                final Logger logger = Logger.getLogger("workflow.jsp");
 
-            // out.println("remote adress::" + request.getRemoteAddr()+ "<br>");
+
+
+        %>
+
+        <%            // out.println("remote adress::" + request.getRemoteAddr()+ "<br>");
 //           
 //            response.setContentType("text/html");        l;
 //
@@ -143,7 +148,7 @@
         <div align="center" >
             <button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bd-input-modal-lg">WorkFlow Inputs</button>
             <button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bd-output-modal-lg">WorkFlow Outputs</button>
-<!--            <button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bd-preparation-modal-lg"> WorkFlow Preparations</button>-->
+            <!--            <button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bd-preparation-modal-lg"> WorkFlow Preparations</button>-->
 
         </div>
         <br><br>
@@ -178,10 +183,16 @@
 
                             <tbody >
 
-                                <%                                
-                                    for (VfeWorkflowInputAdp input : workflow.getVfeWorkflowInputAdps()) {
-                                        String isList = "-";
-                                        String subFields = "-";
+                                <%                                    if (workflow == null) {
+                                        String errorMessage = "there is no workflow with this id ";
+                                        request.setAttribute("errorMessage", errorMessage);
+                                        logger.error("There is no Workflow With the requested ID");
+                                        throw new Exception("Test");
+                                    } else {
+
+                                        for (VfeWorkflowInputAdp input : workflow.getVfeWorkflowInputAdps()) {
+                                            String isList = "-";
+                                            String subFields = "-";
 
                                 %>
                                 <tr>
@@ -213,7 +224,8 @@
 
 
 
-                                <%}%>
+                                <%}
+                                    }%>
 
                             </tbody>
                         </table>
@@ -387,7 +399,7 @@
 
                                     <select  name="activityDBID" class="form-control">
 
-                                        <option class="form-control" value="null">Null</option>
+<!--                                        <option class="form-control" value="null">Null</option>-->
                                         <%
                                             List<VfeLkDbAdp> dbName = (List<  VfeLkDbAdp>) request.getSession().getAttribute("dbName");
 
@@ -625,7 +637,7 @@
 
 
 
-<div class="modal fade bd-output-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+        <div class="modal fade bd-output-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
             <div class="modal-dialog modal-lg">
                 <div class="modal-content container-fluid">
                     <div align="center" >
@@ -729,7 +741,7 @@
                                     <td> <%= preparation.getParameterName()%></td>
                                     <td><%= preparation.getSaveToPool().getBooleanValue()%> </td>
                                     <td><%= preparation.getPreparationOrder()%> </td>
-                                     <td> <%= step.getActivityId().getActivityId()%> </td>
+                                    <td> <%= step.getActivityId().getActivityId()%> </td>
 
 
                                     <td><%= preparation.getVfeLkPreparationTypesAdp().getPreparationDescription()%></td>
@@ -795,13 +807,13 @@
 
                         <th scope="col" class="col-sm text-center " style="width: fit-content" >Activity Description</th>
 
-                        
-                     
-                        
-                        
-                        
-                        
-                        
+
+
+
+
+
+
+
 
 
                         <th scope="col" class="col-sm text-center " style="width: fit-content" >Condition ID</th>
@@ -858,7 +870,7 @@
 
 
                             </a>
-                            
+
 
 
 
@@ -928,7 +940,7 @@
 
                         </td>
 
-<!--Here-->
+                        <!--Here-->
 
 
 
@@ -976,16 +988,16 @@
                         <td>
 
 
-                           
 
-                                <%= condition.getId().getConditionId()%>
-                           
+
+                            <%= condition.getId().getConditionId()%>
+
 
 
 
                         </td>
                         <td>
-                            <%= condition.getConditionOrder() %>
+                            <%= condition.getConditionOrder()%>
                         </td>
                         <td><%= condition.getVfeConditionsAdp().getParameterName()%></td>
                         <td><%= condition.getVfeConditionsAdp().getVfeLkConditionTypesAdp().getConditionTypeDesc()%></td>

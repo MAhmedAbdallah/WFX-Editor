@@ -55,9 +55,9 @@ public class PreparationController {
         try {
 
             VfeWorkflowPreparationAdp preparation = preparationService.getPreparation(preparationId);
-            logger.info("Preparation Description --------> " + preparation.getDescription());
+            // logger.info("Preparation Description --------> " + preparation.getDescription());
         } catch (Exception e) {
-            logger.error("Error in fetching preparation with id " + preparationId);
+            logger.error("Error in fetching preparation with id " + preparationId + " because " + e.getMessage());
         }
     }
 
@@ -114,11 +114,8 @@ public class PreparationController {
 
         //____________________________________________________________________________________________________________________________
         //  VfeWorkflowsAdp workflow = workFlowService.getWorkFlow(workFlowId, 1L);
-      //  preparation.setVfeWorkflowStepsAdp(workflow.getVfeWorkflowStepsAdps().iterator().next());
-      
-      
-      
-              Set<VfeWorkflowStepsAdp> steps = workflow.getVfeWorkflowStepsAdps();
+        //  preparation.setVfeWorkflowStepsAdp(workflow.getVfeWorkflowStepsAdps().iterator().next());
+        Set<VfeWorkflowStepsAdp> steps = workflow.getVfeWorkflowStepsAdps();
 
         for (VfeWorkflowStepsAdp step : steps) {
             if (step.getActivityId().getActivityId() == activityId) {
@@ -126,18 +123,16 @@ public class PreparationController {
             }
         }
 
-      
-      
-      
-
         //preparation.set
         try {
-            logger.info("Response Flag of creating preparation ------->   " + preparationService.savePreparation(preparation));
+            logger.info("Response Flag of creating preparation with id " + maxId + "------->   " + preparationService.savePreparation(preparation));
+            logger.info("creating preparation with id " + maxId + " created by  ------->   " + request.getSession().getAttribute("clientIp"));
+
             workflow = workFlowService.getWorkFlow(workflow.getId().getWorkflowId(), workflow.getId().getVersionId());
-          //workflow.getVfeWorkflowStepsAdps().iterator().next().getVfeWorkflowPreparationAdps().add(preparation);
-          request.getSession(false).setAttribute("workflow", workflow);
+            //workflow.getVfeWorkflowStepsAdps().iterator().next().getVfeWorkflowPreparationAdps().add(preparation);
+            request.getSession(false).setAttribute("workflow", workflow);
         } catch (Exception e) {
-            logger.error("Error in creating preparation with Activity id " + activityId);
+            logger.error("Error in creating preparation with Activity id " + activityId + " because " + e.getMessage());
 
         }
 
@@ -146,19 +141,22 @@ public class PreparationController {
     }
 
     @GetMapping("/Delete/{preparationId}/{activityId}")
-    public String deletePreparation(@PathVariable long preparationId,@PathVariable long activityId) {
+    public String deletePreparation(@PathVariable long preparationId, @PathVariable long activityId) {
         try {
             VfeWorkflowsAdp workflow = (VfeWorkflowsAdp) request.getSession(false).getAttribute("workflow");
-           // VfeWorkflowPreparationAdp preparation = preparationService.getPreparation(preparationId);
-                VfeWorkflowPreparationAdp preparation = new VfeWorkflowPreparationAdp(preparationId);
-               logger.info("Response Flag of deleting Preparation  ------->   " + preparationService.deletePreparation(preparation));
-              workflow = workFlowService.getWorkFlow(workflow.getId().getWorkflowId(), workflow.getId().getVersionId());
-               request.getSession(false).setAttribute("workflow", workflow);
+            // VfeWorkflowPreparationAdp preparation = preparationService.getPreparation(preparationId);
+            VfeWorkflowPreparationAdp preparation = new VfeWorkflowPreparationAdp(preparationId);
+            logger.info("Response Flag of deleting Preparation  ------->   " + preparationService.deletePreparation(preparation));
+
+            logger.info("deleting Preparation with id " + preparationId + " deleted by  ------->   " + request.getSession().getAttribute("clientIp"));
+
+            workflow = workFlowService.getWorkFlow(workflow.getId().getWorkflowId(), workflow.getId().getVersionId());
+            request.getSession(false).setAttribute("workflow", workflow);
         } catch (Exception e) {
-            logger.error("Error in deleting preparation with id " + preparationId);
+            logger.error("Error in deleting preparation with id " + preparationId + " because " + e.getMessage());
 
         }
-         return "redirect:/Activity/Get/" + activityId;
+        return "redirect:/Activity/Get/" + activityId;
 
     }
 

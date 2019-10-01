@@ -53,24 +53,15 @@ public class ActivityController {
 
     @Autowired
     private ActivityService activityService;
-    
-    
-    
-    
-    
-      @Autowired
+
+    @Autowired
     private PreparationConditionService preparationConditionService;
-      
-       @Autowired
+
+    @Autowired
     private PreparationParameterService preparationParameterService;
-       
-        @Autowired
+
+    @Autowired
     private PreparationService preparationService;
-                
-    
-    
-    
-    
 
     @Autowired
     private WorkFlowService workFlowService;
@@ -107,7 +98,8 @@ public class ActivityController {
             }
 
         } catch (Exception e) {
-            logger.error("Error in fetching Activity with id  --------> " + activityId);
+//            logger.error("Error in fetching Activity with id  --------> " + activityId);
+//            logger.error("Error in fetching beacause  --------> " + e.getMessage());
         }
         return "activity";
     }
@@ -246,7 +238,7 @@ public class ActivityController {
         }
 
         if (activityQueryTimeOut == null || activityQueryTimeOut.length() == 0) {
-            activity.setQueryTimeout(Long.parseLong(activityQueryTimeOut));
+            activity.setQueryTimeout(null);
         } else {
             activity.setQueryTimeout(Long.parseLong(activityQueryTimeOut));
         }
@@ -295,11 +287,13 @@ public class ActivityController {
         try {
             logger.info("Response Flag of Creating activity ------->   " + activityService.saveActivity(activity));
             request.getSession().setAttribute("activity", activity);
+            logger.info("Created Activity with Id " + maxId + " By ------->   " + request.getSession().getAttribute("clientIp"));
 
             //response.sendRedirect("/Step/Create");
             // request.getRequestDispatcher("/Step/Create").forward(request, response);
         } catch (Exception e) {
             logger.error("Error in creating Activity with id  --------> " + maxId);
+            logger.error("Error in creating because  --------> " + e.getMessage());
         }
         return "redirect:/Step/Create";
     }
@@ -331,8 +325,11 @@ public class ActivityController {
 //after this line delete activity working
             VfeActivitiesAdp activity = activityService.getActivity(activityId);
             logger.info("Response Flag of deleting activity ------->   " + activityService.deleteActivity(activity));
+            logger.info("Deleted Activity with Id " + activityId + " By ------->   " + request.getSession().getAttribute("clientIp"));
+
         } catch (Exception e) {
-            logger.error("Error in creating Activity with id  --------> " + activityId);
+            logger.error("Error in Deleting Activity with id " + activityId + " because  --------> " + e.getMessage());
+
         }
     }
 

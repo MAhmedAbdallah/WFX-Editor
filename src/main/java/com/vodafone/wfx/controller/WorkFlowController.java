@@ -109,8 +109,15 @@ public class WorkFlowController {
 //            }
         } catch (Exception e) {
 
-            logger.error("Error In fetching Workflow With Id " + workFlowId);
-            e.printStackTrace();
+            logger.error("Error In fetching Workflow With Id " + workFlowId+" because "+e.getMessage());
+            
+//            String errorMessage = "there is no workflow with id "+workFlowId ;
+//            request.setAttribute("errorMessage", errorMessage);
+//            
+            
+            
+            
+           
         }
 
         return "workflow";
@@ -153,7 +160,7 @@ public class WorkFlowController {
         try {
             logger.info("Response Flag of Creating New Workflow ------->   " + workFlowService.saveWorkFlow(workFlow));
         } catch (Exception e) {
-            logger.error("Error In Creating Workflow With Name " + workFlow.getFlowName());
+            logger.error("Error In Creating Workflow With Name " + workFlow.getFlowName() +" because "+e.getMessage());
         }
 
     }
@@ -165,21 +172,21 @@ public class WorkFlowController {
 
             logger.info("Response Flag of Deleting Workflow ------->   " + workFlowService.deleteWorkFlow(workFlow));
         } catch (Exception e) {
-            logger.error("Error In Deleting Workflow With Id " + workFlowId);
+            logger.error("Error In Deleting Workflow With Id " + workFlowId +" because "+e.getMessage());
         }
 
     }
     
     
     
-
-    @GetMapping("/test")
-    public String getMaxId() {
-            System.out.println( request.getAttribute("TEST"));
-            
-            EditorUtil.getActivityType();
-            
-        return "activity";
-    }
+//
+//    @GetMapping("/test")
+//    public String getMaxId() {
+//            System.out.println( request.getAttribute("TEST"));
+//            
+//            EditorUtil.getActivityType();
+//            
+//        return "activity";
+//    }
 
 }

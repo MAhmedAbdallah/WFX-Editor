@@ -55,9 +55,11 @@ public class PreparationConditionController {
         try {
             VfePreparationConditionsAdpId preparationConditionId = new VfePreparationConditionsAdpId(preparationId, conditionId);
             VfePreparationConditionsAdp preparationCondition = preparationConditionservice.getPreparationCondition(preparationConditionId);
-            logger.info("Preparation Parameter Value --------> " + preparationCondition.getRelationTypeId());
+            //logger.info("Preparation Parameter Value --------> " + preparationCondition.getRelationTypeId());
         } catch (Exception e) {
-            logger.error("Error in fetching Preparation Condition with preparation id " + preparationId);
+            logger.error("Error in fetching Preparation Condition with preparation id " + preparationId+" because "+ e.getMessage());
+//            logger.error("Error in fetching Preparation Condition with preparation id " + preparationId);
+
         }
 
     }
@@ -80,8 +82,10 @@ public class PreparationConditionController {
 
         try {
             logger.info("Response Flag of creating preparation condition ------->   " + preparationConditionservice.savePreparationCondition(preparationCondition));
+      //      logger.info("Created preparation condition with Id " + maxId + " By ------->   " + request.getSession().getAttribute("clientIp"));
+
         } catch (Exception e) {
-            logger.error("Error in Creating Preparation Condition with preparation id " + preparationId);
+            logger.error("Error in Creating Preparation Condition with preparation id " + preparationId + "because "+e.getMessage() );
         }
 
     }
@@ -91,9 +95,11 @@ public class PreparationConditionController {
         try {
             VfePreparationConditionsAdpId preparationConditionId = new VfePreparationConditionsAdpId(preparationId, conditionId);
             VfePreparationConditionsAdp preparationCondition = preparationConditionservice.getPreparationCondition(preparationConditionId);
-            logger.info("Preparation Parameter Value --------> " + preparationConditionservice.deletePreparationCondition(preparationCondition));
+            logger.info("Response Flag of deleting Preparation condition Value --------> " + preparationConditionservice.deletePreparationCondition(preparationCondition));
+            logger.info("Deleting Preparation Parameter withh id " + preparationId + " By ------->   " + request.getSession().getAttribute("clientIp"));
+
         } catch (Exception e) {
-            logger.error("Error in deleting Preparation Condition with preparation id " + preparationId);
+            logger.error("Error in deleting Preparation Condition with preparation id " + preparationId + "because "+e.getMessage());
 
         }
     }
@@ -110,7 +116,7 @@ public class PreparationConditionController {
            preparationsCondition= preparationConditionservice.getPreparationCondition(conditionId);
            request.getSession().setAttribute("preparationsCondition", preparationsCondition);
         } catch (Exception e) {
-            logger.error("Error in fetching Preparation Condition with condition id " + conditionId);
+            logger.error("Error in fetching Preparation Condition with condition id " + conditionId +"because "+e.getMessage());
         }
         return "preparationscondition";
     }

@@ -51,10 +51,12 @@ public class ConditionController {
 
         try {
             condition = conditionService.getCondition(conditionId);
-            logger.info("Condition Parameter Name --------> " + condition.getParameterName());
+            //  logger.info("Condition Parameter Name --------> " + condition.getParameterName());
 
         } catch (Exception e) {
             logger.error("Error in fetching condition with id --------> " + conditionId);
+            logger.error("Error in fetching Condition with id " + conditionId + " because  --------> " + e.getMessage());
+
         }
         return condition;
     }
@@ -120,6 +122,7 @@ public class ConditionController {
 
         } catch (Exception e) {
             logger.error("Error in creating Condition with id " + maxId);
+            logger.error("Error in creating Condition with id " + maxId + " because  --------> " + e.getMessage());
 
         }
         return "redirect:/WorkFlow/Get/" + workFlow.getId().getWorkflowId();
@@ -136,6 +139,7 @@ public class ConditionController {
             logger.info("Condition with Id " + conditionId + " Deleted by  ------->   " + request.getSession().getAttribute("clientIp"));
         } catch (Exception e) {
             logger.error("Error in deleting Condition with id " + conditionId);
+            logger.error("Error in Deleting Condition with id " + conditionId + " because  --------> " + e.getMessage());
 
         }
         VfeWorkflowsAdp workflows = (VfeWorkflowsAdp) request.getSession(false).getAttribute("workflow");
