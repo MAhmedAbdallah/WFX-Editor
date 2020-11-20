@@ -10,7 +10,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
     <head>
-         <!--Author     : V19MFoda-->
+        <!--Author     : V19MFoda-->
         <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
         <title>WorkFlow X Editor</title>
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
@@ -20,7 +20,7 @@
         <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}"/>
 
         <link rel="shortcut icon" type="image/x-icon" href="webapp/WEB-INF/view/logo.jpg" />
-<link rel="shortcut icon" type="image/x-icon" href="https://i.dlpng.com/static/png/401889_preview.png"    />
+        <link rel="shortcut icon" type="image/x-icon" href="https://www.freepnglogos.com/uploads/vodafone-png-logo/vodafone-ghana-14.png"    />
 
     </head>
 
@@ -40,12 +40,12 @@
 
         <div class="jumbotron jumbotron-fluid font-weight-bold">
             <div class="container">
-                               <h1 class="display-4  animated swing" style="font-family:Vodafone Rg;" align="center">                  
-                 
-                     <img src="https://i.dlpng.com/static/png/401889_preview.png" 
+                <h1 class="display-4  animated swing" style="font-family:Vodafone Rg;" align="center">                  
+
+                    <img src="https://www.freepnglogos.com/uploads/vodafone-png-logo/vodafone-ghana-14.png" 
                          alt="Vodafone Logo" width="100" height="100" align="middle">
                     WorkFlowX-Editor
-                
+
                 </h1>
 
                 <!--<p class="lead">This is a modified jumbotron that occupies the entire horizontal space of its parent.</p>-->
@@ -65,7 +65,8 @@
                         <br><br>
 
 
-                        <button type="submit" value="Search" class="btn btn-primary">Search</button>
+                        <button type="submit" value="Search" class="btn btn-primary">Search</button> &nbsp;&nbsp;
+<!--                        <button type="submit" value="Search" class="btn btn-primary">Create Workflow</button>-->
 
 
                     </form>
@@ -126,7 +127,7 @@
 
     </body>
     <!-- Footer -->
-<footer class="page-footer font-small blue">
+    <footer class="page-footer font-small blue">
 
         <!-- Copyright -->
         <div class="footer-copyright text-center py-3">© 2019 Copyright: &nbsp;
@@ -136,10 +137,10 @@
 
     </footer>
     <!-- Footer -->
-      <!-- Footer -->
-  <footer class="page-footer font-small Red">
+    <!-- Footer -->
+    <footer class="page-footer font-small Red">
 
-        
+
 
 
         <div class="footer-copyright text-center py-3">Contact:<br/>
@@ -149,7 +150,7 @@
                 Ahmed Motawea
             </a>
         </div>
-       
+
 
     </footer>
 </html>

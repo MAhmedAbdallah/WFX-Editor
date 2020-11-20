@@ -86,8 +86,7 @@
     <body class="font-weight-bold text-center">
         <%
             VfeWorkflowsAdp workflow = (VfeWorkflowsAdp) request.getSession(false).getAttribute("workflow");
-                final Logger logger = Logger.getLogger("workflow.jsp");
-
+            final Logger logger = Logger.getLogger("workflow.jsp");
 
 
         %>
@@ -297,7 +296,7 @@
                                 <div class="col-sm-10">
 
                                     <select name="activityType" class="form-control">
-<!--                                        <option class="form-control" value="null">Null</option>-->
+                                        <!--                                        <option class="form-control" value="null">Null</option>-->
 
                                         <%
 
